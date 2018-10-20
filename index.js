@@ -223,7 +223,7 @@ bot.on('ready', () => {
 
 bot.on('message', async message => {
     if (message.channel.type == "dm") return // Если в ЛС, то выход.
-    if (message.guild.id != "283157523958071297") return
+    if (message.guild.id != "438803520288981004") return
     if (message.type === "PINS_ADD") if (message.channel.name == "requests-for-roles") message.delete();
     if (message.content == "/ping") return message.reply("`я онлайн.`") && console.log(`Бот ответил ${message.member.displayName}, что я онлайн.`)
     if (message.author.bot) return
@@ -470,7 +470,7 @@ bot.on('raw', async event => {
         let event_emoji_name = event.d.emoji.name
         let event_channelid = event.d.channel_id
         let event_guildid = event.d.guild_id
-        if (event_guildid != "283157523958071297") return
+        if (event_guildid != "438803520288981004") return
         if (event_userid == bot.user.id) return
         let requser = bot.guilds.find(g => g.id == event_guildid).members.find(m => m.id == event_userid);
         let reqchannel = bot.guilds.find(g => g.id == event_guildid).channels.find(c => c.id == event_channelid);
