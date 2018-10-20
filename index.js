@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 const fs = require("fs");
 const { getDateString } = require('./objects/functions'); // [getDateString()] logMessage.
 
-let version = '3.5';
+let version = '3.4';
 
 let requests = JSON.parse(fs.readFileSync("./database/requests.json", "utf8"));
 let blacklist = JSON.parse(fs.readFileSync("./database/blacklist names.json", "utf8"));
