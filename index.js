@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 const fs = require("fs");
 const { getDateString } = require('./objects/functions'); // [getDateString()] logMessage.
 
-let version = '1.1';
+let version = '1.2';
 
 let requests = JSON.parse(fs.readFileSync("./database/requests.json", "utf8"));
 let blacklist = JSON.parse(fs.readFileSync("./database/blacklist names.json", "utf8"));
@@ -61,12 +61,9 @@ let manytags = [
 "ТСР",
 "JLV",
 
-"LSMC",
-"ЛСМЦ",
-"SFMC",
-"СФМЦ",
-"LVMC",
-"ЛВМЦ",
+"MCLS",
+"MCSF",
+"MCLV",
 
 "CNN LS",
 "CNN SF",
