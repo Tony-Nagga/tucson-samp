@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 const fs = require("fs");
 const { getDateString } = require('./objects/functions'); // [getDateString()] logMessage.
 
-let version = '3.4';
+let version = '1.0';
 
 let requests = JSON.parse(fs.readFileSync("./database/requests.json", "utf8"));
 let blacklist = JSON.parse(fs.readFileSync("./database/blacklist names.json", "utf8"));
@@ -13,117 +13,53 @@ const nrpnames = new Set();
 const zaprosagain = new Set();
 
 tags = ({
-    "ПРА-ВО": "Сотрудник Правительства",
-    "АШ": "Сотрудник Автошколы",
-    "ЦБ": "Сотрудник Центрального Банка",
+    "GOV": "Сотрудник Gov",
+    "DS": "Сотрудник DS",
+    "CBLS": "Сотрудник Central Bank",
 
-    "FBI": "Сотрудник ФБР",
-    "ФБР": "Сотрудник ФБР",
-    "LSPD": "Сотрудник Полиции ЛС",
-    "ЛСПД": "Сотрудник Полиции ЛС",
-    "SFPD": "Сотрудник Полиции СФ",
-    "СФПД": "Сотрудник Полиции СФ",
-    "LVPD": "Сотрудник Полиции ЛВ",
-    "ЛВПД": "Сотрудник Полиции ЛВ",
-    "RCPD": "Сотрудник RCSD",
-    "РКПД": "Сотрудник RCSD",
-    "RCSD": "Сотрудник RCSD",
-    "РКШД": "Сотрудник RCSD",
+    "FBI": "Сотрудник МЮ",
+    "LSPD": "Сотрудник МЮ",
+    "SFPD": "Сотрудник МЮ",
+    "LVPD": "Сотрудник МЮ",
+    "RCPD": "Сотрудник МЮ",
+    "RCSD": "Сотрудник МЮ",
 
-    "LSA": "Военнослужащий LSa",
-    "ЛСА": "Военнослужащий LSa",
-    "SFA": "Военнослужащий SFa",
-    "СФА": "Военнослужащий SFa",
-    "LS-A": "Военнослужащий LSa",
-    "ЛС-А": "Военнослужащий LSa",
-    "SF-A": "Военнослужащий SFa",
-    "СФ-А": "Военнослужащий SFa",
-    "ТСР": "Сотрудник тюрьмы LV",
-    "ТЮРЬМА": "Сотрудник тюрьмы LV",
+    "LSA": "Сотрудник МО",
+    "SFA": "Сотрудник МО",
+    "ТСР": "Сотрудник МО",
+    "JLV": "Сотрудник МО",
 
-    "LSMC": "Сотрудник Больницы ЛС",
-    "ЛСМЦ": "Сотрудник Больницы ЛС",
-    "SFMC": "Сотрудник Больницы СФ",
-    "СФМЦ": "Сотрудник Больницы СФ",
-    "LVMC": "Сотрудник Больницы ЛВ",
-    "ЛВМЦ": "Сотрудник Больницы ЛВ",
+    "MCLS": "Сотрудник МЗ",
+    "MCSF": "Сотрудник МЗ",
+    "MCLV": "Сотрудник МЗ",
 
-    "R-LS": "Сотрудник СМИ ЛС",
-    "RLS": "Сотрудник СМИ ЛС",
-    "Р-ЛС": "Сотрудник СМИ ЛС",
-    "РЛС": "Сотрудник СМИ ЛС",
-    "R-SF": "Сотрудник СМИ СФ",
-    "RSF": "Сотрудник СМИ СФ",
-    "Р-СФ": "Сотрудник СМИ СФ",
-    "РСФ": "Сотрудник СМИ СФ",
-    "R-LV": "Сотрудник СМИ ЛВ",
-    "RLV": "Сотрудник СМИ ЛВ",
-    "Р-ЛВ": "Сотрудник СМИ ЛВ",
-    "РЛВ": "Сотрудник СМИ ЛВ",
-    "CNN LS": "Сотрудник СМИ ЛС",
-    "CNN SF": "Сотрудник СМИ СФ",
-    "CNN LV": "Сотрудник СМИ ЛВ",
-    "СМИ LS": "Сотрудник СМИ ЛС",
-    "СМИ SF": "Сотрудник СМИ СФ",
-    "СМИ LV": "Сотрудник СМИ ЛВ",
-    "CNN ЛС": "Сотрудник СМИ ЛС",
-    "CNN СФ": "Сотрудник СМИ СФ",
-    "CNN ЛВ": "Сотрудник СМИ ЛВ",
-    "СМИ ЛС": "Сотрудник СМИ ЛС",
-    "СМИ СФ": "Сотрудник СМИ СФ",
-    "СМИ ЛВ": "Сотрудник СМИ ЛВ",
+    "CNN LS": "Сотрудник СМИ",
+    "CNN SF": "Сотрудник СМИ",
+    "CNN LV": "Сотрудник СМИ",
 
-    "WMC": "Член мафии Warlock MC",
-    "W-MC": "Член мафии Warlock MC",
-    "RM": "Член мафии Russian Mafia",
-    "РМ": "Член мафии Russian Mafia",
-    "LCN": "Член мафии La Cosa Nostra",
-    "ЛКН": "Член мафии La Cosa Nostra",
-    "YAKUZA": "Член мафии Yakuza",
-    "ЯКУДЗА": "Член мафии Yakuza",
-
-    "GROVE": "Член банды Grove Street",
-    "ГРУВ": "Член банды Grove Street",
-    "BALLAS": "Член банды The Ballas",
-    "БАЛЛАС": "Член банды The Ballas",
-    "VAGOS": "Член банды Los-Santos Vagos",
-    "ВАГОС": "Член банды Los-Santos Vagos",
-    "NW": "Член банды Night Wolfs",
-    "НВ": "Член банды Night Wolfs",
-    "RIFA": "Член банды The Rifa",
-    "РИФА": "Член банды The Rifa",
-    "AZTEC": "Член банды Varios Los Aztecas",  
-    "АЦТЕК": "Член банды Varios Los Aztecas",  
+    "WMC": "Warlock MC",
+    "RM": "Russian Mafia",
+    "LCN": "La Сosa Nostra",
+    "YAKUZA": "Yakuza",
+  
 });
 
 let manytags = [
-"ПРА-ВО",
-"АШ",
-"ЦБ",
+"GOV",
+"DS",
+"CBLS",
 
 "FBI",
-"ФБР",
 "LSPD",
-"ЛСПД",
 "SFPD",
-"СФПД",
 "LVPD",
-"ЛВПД",
 "RCPD",
-"РКПД",
 "RCSD",
-"РКШД",
 
 "LSA",
-"ЛСА",
 "SFA",
-"СФА",
-"LS-A",
-"ЛС-А",
-"SF-A",
-"СФ-А",
 "ТСР",
-"ТЮРЬМА",
+"JLV",
 
 "LSMC",
 "ЛСМЦ",
@@ -132,52 +68,14 @@ let manytags = [
 "LVMC",
 "ЛВМЦ",
 
-"R-LS",
-"RLS",
-"Р-ЛС",
-"РЛС",
-"R-SF",
-"RSF",
-"Р-СФ",
-"РСФ",
-"R-LV",
-"RLV",
-"Р-ЛВ",
-"РЛВ",
 "CNN LS",
 "CNN SF",
 "CNN LV",
-"СМИ LS",
-"СМИ SF",
-"СМИ LV",
-"CNN ЛС",
-"CNN СФ",
-"CNN ЛВ",
-"СМИ ЛС",
-"СМИ СФ",
-"СМИ ЛВ",
 
 "WMC",
-"W-MC",
 "RM",
-"РМ",
 "LCN",
-"ЛКН",
 "YAKUZA",
-"ЯКУДЗА",
-
-"GROVE",
-"ГРУВ",
-"BALLAS",
-"БАЛЛАС",
-"VAGOS",
-"ВАГОС",
-"AZTEC",  
-"АЦТЕК",
-"RIFA",
-"РИФА",
-"NW",
-"НВ",
 ];
 
 let rolesgg = ["Сотрудник ФБР",
@@ -218,12 +116,12 @@ bot.login(process.env.token);
 
 bot.on('ready', () => {
     console.log("Бот был успешно запущен!");
-    bot.user.setGame(`Arizona Chandler v${version}`);
+    bot.user.setGame(`Arizona Tucson v${version}`);
 });
 
 bot.on('message', async message => {
     if (message.channel.type == "dm") return // Если в ЛС, то выход.
-    if (message.guild.id != "466902380223660033") return
+    if (message.guild.id != "438803520288981004") return
     if (message.type === "PINS_ADD") if (message.channel.name == "requests-for-roles") message.delete();
     if (message.content == "/ping") return message.reply("`я онлайн.`") && console.log(`Бот ответил ${message.member.displayName}, что я онлайн.`)
     if (message.author.bot) return
@@ -330,7 +228,7 @@ bot.on('message', async message => {
     }
     
     if (message.content.toLowerCase().startsWith("/remove")){
-        if (!message.member.roles.some(r=>["Следящий за Discord | Chandler", "Тех. администратор Discord | Chandler", "Выдача ролей"].includes(r.name)) && !message.member.hasPermission("ADMINISTRATOR")) return message.delete()
+        if (!message.member.roles.some(r=>["Moderator ✔️"].includes(r.name)) && !message.member.hasPermission("ADMINISTRATOR")) return message.delete()
         let user = message.guild.member(message.mentions.users.first());
         if (!user){
             message.delete();
@@ -470,7 +368,7 @@ bot.on('raw', async event => {
         let event_emoji_name = event.d.emoji.name
         let event_channelid = event.d.channel_id
         let event_guildid = event.d.guild_id
-        if (event_guildid != "466902380223660033") return
+        if (event_guildid != "438803520288981004") return
         if (event_userid == bot.user.id) return
         let requser = bot.guilds.find(g => g.id == event_guildid).members.find(m => m.id == event_userid);
         let reqchannel = bot.guilds.find(g => g.id == event_guildid).channels.find(c => c.id == event_channelid);
@@ -482,7 +380,7 @@ bot.on('raw', async event => {
         if (reqchannel.name != "requests-for-roles") return
 
         if (event_emoji_name == "🇩"){
-            if (!requser.roles.some(r => ["Следящий за Discord | Chandler", "Тех. администратор Discord | Chandler", "Выдача ролей"].includes(r.name))){
+            if (!requser.roles.some(r => ["Moderator ✔️"].includes(r.name))){
                 return reqchannel.send(`\`[ERROR]\` <@${requser.id}> \`ошибка доступа! Функция доступна Тех.Администраторам и выше.\``).then(mesg => mesg.delete(7000))
             }
 
