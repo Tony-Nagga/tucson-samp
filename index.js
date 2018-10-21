@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 const fs = require("fs");
 const { getDateString } = require('./objects/functions'); // [getDateString()] logMessage.
 
-let version = '1.0';
+let version = '1.1';
 
 let requests = JSON.parse(fs.readFileSync("./database/requests.json", "utf8"));
 let blacklist = JSON.parse(fs.readFileSync("./database/blacklist names.json", "utf8"));
@@ -78,34 +78,17 @@ let manytags = [
 "YAKUZA",
 ];
 
-let rolesgg = ["Сотрудник ФБР",
-"Сотрудник Полиции ЛС",
-"Сотрудник Полиции СФ",
-"Сотрудник Полиции ЛВ",
-"Сотрудник RCSD",
-"Сотрудник Больницы ЛС",
-"Сотрудник Больницы СФ",
-"Сотрудник Больницы ЛВ",
-"Сотрудник Правительства",
-"Участник Парламента",
-"Сотрудник Центрального Банка",
-"Сотрудник Автошколы",
-"Военнослужащий LSa",
-"Военнослужащий SFa",
-"Сотрудник тюрьмы LV",
-"Сотрудник СМИ ЛВ",
-"Сотрудник СМИ СФ",
-"Сотрудник СМИ ЛС",
-"Член банды Night Wolfs",
-"Член банды Varios Los Aztecas",
-"Член банды The Rifa",
-"Член банды Los-Santos Vagos",
-"Член банды Grove Street",
-"Член банды The Ballas",
-"Член мафии Russian Mafia",
-"Член мафии La Cosa Nostra",
-"Член мафии Warlock MC",
-"Член мафии Yakuza"]
+let rolesgg = ["Сотрудник МЮ",
+"Сотрудник МЗ",
+"Сотрудник Gov",
+"Сотрудник DS",
+"Сотрудник Central Bank",
+"Сотрудник МО",
+"Сотрудник СМИ",
+"Russian Mafia",
+"La Cosa Nostra",
+"Warlock MC",
+"Yakuza"]
 
 const events = {
     MESSAGE_REACTION_ADD: 'messageReactionAdd',
