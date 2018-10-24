@@ -171,7 +171,7 @@ bot.on('message', async message => {
     }
     
     if (message.content == '!roleinfo'){
-        if (!message.member.hasPermission("MANAGE_ROLES") && message.author.id != "336207279412215809") return
+        if (!message.member.hasPermission("MANAGE_ROLES") && message.author.id != "438803520288981004") return
         let r_tags;
         let r_role;
         let r_number = 0;
