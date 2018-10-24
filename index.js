@@ -236,7 +236,7 @@ bot.on('message', async message => {
             const embed = new Discord.RichEmbed()
             .setTitle("`Discord » Снятие ролей участнику`")
             .setColor("#FF0000")
-            .setFooter("© Support Team | by Kory_McGregor")
+            .setFooter("© Тех.поддержка | by Tony_Nagga")
             .setTimestamp()
             .addField("Информация", 
             `\`Пользователь:\` <@${user.id}>\n` +
