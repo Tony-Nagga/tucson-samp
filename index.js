@@ -103,7 +103,7 @@ bot.on('message', async message => {
     if (message.channel.type == "dm") return // Если в ЛС, то выход.
     if (message.guild.id != "438803520288981004") return
     if (message.type === "PINS_ADD") if (message.channel.name == "requests-for-roles") message.delete();
-    if (message.content == "/ping") return message.reply("`я онлайн.`") && console.log(`Бот ответил ${message.member.displayName}, что я онлайн.`)
+    if (message.content == "/ping") return message.reply("`я работаю.`") && console.log(`Бот ответил ${message.member.displayName}, что я онлайн.`)
     if (message.author.bot) return
 
     if (message.content.startsWith("/ffuser")){
@@ -361,7 +361,7 @@ bot.on('raw', async event => {
 
         if (event_emoji_name == "🇩"){
             if (!requser.roles.some(r => ["Moderator ✔️"].includes(r.name))){
-                return reqchannel.send(`\`[ERROR]\` <@${requser.id}> \`ошибка доступа! Функция доступна Тех.Администраторам и выше.\``).then(mesg => mesg.delete(7000))
+                return reqchannel.send(`\`[ERROR]\` <@${requser.id}> \`ошибка доступа! Функция доступна модераторам.\``).then(mesg => mesg.delete(7000))
             }
 
             if (reqrem[event_messageid]){
