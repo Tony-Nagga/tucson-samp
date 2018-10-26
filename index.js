@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+/*const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require("fs");
 const { getDateString } = require('./objects/functions'); // [getDateString()] logMessage.
@@ -442,7 +442,7 @@ bot.on('raw', async event => {
                     "whorem": message.author.id,
                     "rolerem": rolerem.name,
                     */
-                    let userremto = bot.guilds.find(g => g.id == event_guildid).members.find(m => m.id == reqrem[event_messageid].userrem);
+                    /*let userremto = bot.guilds.find(g => g.id == event_guildid).members.find(m => m.id == reqrem[event_messageid].userrem);
                     let whoremto = bot.guilds.find(g => g.id == event_guildid).members.find(m => m.id == reqrem[event_messageid].whorem)
                     let roleremto = bot.guilds.find(g => g.id == event_guildid).roles.find(r => r.name == reqrem[event_messageid].rolerem);
                     if (userremto.roles.some(r => [roleremto.name].includes(r.name))){
@@ -492,3 +492,4 @@ bot.on('raw', async event => {
 
     }
 });
+*/
