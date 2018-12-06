@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 const fs = require("fs");
 const { getDateString } = require('./objects/functions'); // [getDateString()] logMessage.
 
-let version = '1.2';
+let version = '1.3';
 
 let requests = JSON.parse(fs.readFileSync("./database/requests.json", "utf8"));
 let blacklist = JSON.parse(fs.readFileSync("./database/blacklist names.json", "utf8"));
@@ -13,29 +13,29 @@ const nrpnames = new Set();
 const zaprosagain = new Set();
 
 tags = ({
-    "GOV": "Сотрудник Gov",
-    "DS": "Сотрудник DS",
-    "CBLS": "Сотрудник Central Bank",
+    "GOV": "Сотрудник Правительства",
+    "DS": "Сотрудник Автошколы ",
+    "CBLS": "Сотрудник Банка LS",
 
-    "FBI": "Сотрудник МЮ",
-    "LSPD": "Сотрудник МЮ",
-    "SFPD": "Сотрудник МЮ",
-    "LVPD": "Сотрудник МЮ",
-    "RCPD": "Сотрудник МЮ",
-    "RCSD": "Сотрудник МЮ",
+    "FBI": "Federal Bureau of Investigation",
+    "LSPD": "Сотрудник LSPD",
+    "SFPD": "Сотрудник SFPD",
+    "LVPD": "Сотрудник LVPD",
+    "RCPD": "Сотрудник RCSD",
+    "RCSD": "Сотрудник RCSD",
 
-    "LSA": "Сотрудник МО",
-    "SFA": "Сотрудник МО",
-    "ТСР": "Сотрудник МО",
-    "JLV": "Сотрудник МО",
+    "LSA": "Военнослужащий LSa",
+    "SFA": "Военнослужащий SFa",
+    "ТСР": "Надзиратель Jail LV",
+    "JLV": "Надзиратель Jail LV",
 
-    "MCLS": "Сотрудник МЗ",
-    "MCSF": "Сотрудник МЗ",
-    "MCLV": "Сотрудник МЗ",
+    "MCLS": "Мед. работник MCLS",
+    "MCSF": "Мед. работник MCSF",
+    "MCLV": "Мед. работник MCLV",
 
-    "CNN LS": "Сотрудник СМИ",
-    "CNN SF": "Сотрудник СМИ",
-    "CNN LV": "Сотрудник СМИ",
+    "CNN LS": "Сотрудник радиоцентра LS",
+    "CNN SF": "Сотрудник радиоцентра SF",
+    "CNN LV": "Сотрудник радиоцентра LV",
 
     "WMC": "Warlock MC",
     "RM": "Russian Mafia",
@@ -75,13 +75,23 @@ let manytags = [
 "YAKUZA",
 ];
 
-let rolesgg = ["Сотрудник МЮ",
-"Сотрудник МЗ",
-"Сотрудник Gov",
-"Сотрудник DS",
-"Сотрудник Central Bank",
-"Сотрудник МО",
-"Сотрудник СМИ",
+let rolesgg = ["Сотрудник Правительства",
+"Сотрудник Автошколы",
+"Сотрудник Банка LS",
+"Сотрудник LVPD", 
+"Сотрудник LSPD",
+"Сотрудник RCSD",
+"Сотрудник SFPD",
+"Federal Bureau of Investigation",
+"Военнослужащий SFa", 
+"Военнослужащий LSa", 
+"Надзиратель Jail LV",
+"Мед. работник MCLV",
+"Мед. работник MCSF",
+"Мед. работник MCLS",
+"Сотрудник радиоцентра LV",
+"Сотрудник радиоцентра LS",
+"Сотрудник радиоцентра SF",
 "Russian Mafia",
 "La Cosa Nostra",
 "Warlock MC",
