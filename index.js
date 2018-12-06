@@ -14,7 +14,7 @@ const zaprosagain = new Set();
 
 tags = ({
     "GOV": "Сотрудник Правительства",
-    "DS": "Сотрудник Автошколы ",
+    "DS": "Сотрудник Автошколы",
     "CBLS": "Сотрудник Банка LS",
 
     "FBI": "Federal Bureau of Investigation",
