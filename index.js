@@ -371,7 +371,7 @@ bot.on('raw', async event => {
 
         if (event_emoji_name == "🇩"){
             if (!requser.roles.some(r => ["Technical Administrator", "Старший модератор"].includes(r.name))){
-                return reqchannel.send(`\`[ERROR]\` <@${requser.id}> \`ошибка доступа! Функция доступна модераторам.\``).then(mesg => mesg.delete(7000))
+                return reqchannel.send(`\`[ERROR]\` <@${requser.id}> \`ошибка доступа! Функция доступна только избранным.\``).then(mesg => mesg.delete(7000))
             }
 
             if (reqrem[event_messageid]){
