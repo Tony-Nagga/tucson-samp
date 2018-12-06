@@ -370,7 +370,7 @@ bot.on('raw', async event => {
         if (reqchannel.name != "requests-for-roles") return
 
         if (event_emoji_name == "🇩"){
-            if (!requser.roles.some(r => ["Moderator ✔️"].includes(r.name))){
+            if (!requser.roles.some(r => ["Technical Administrator", "Старший модератор"].includes(r.name))){
                 return reqchannel.send(`\`[ERROR]\` <@${requser.id}> \`ошибка доступа! Функция доступна модераторам.\``).then(mesg => mesg.delete(7000))
             }
 
