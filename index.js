@@ -116,7 +116,7 @@ bot.on('message', async message => {
     if (message.content == "/ping") return message.reply("`доступп заблокирован владельцем. Подробности - Tony_Nagga#5649.`") && console.log(`Бот ответил ${message.member.displayName}, что я онлайн.`)
     if (message.author.bot) return
 
-    /*if (message.content.startsWith("/ffuser")){
+    if (message.content.startsWith("/ffuser")){
         if (!message.member.hasPermission("MANAGE_ROLES")) return
         const args = message.content.slice('/ffuser').split(/ +/)
         if (!args[1]) return
@@ -452,7 +452,7 @@ bot.on('raw', async event => {
                     "whorem": message.author.id,
                     "rolerem": rolerem.name,
                     */
-       /*/*/*/*     /* let userremto = bot.guilds.find(g => g.id == event_guildid).members.find(m => m.id == reqrem[event_messageid].userrem);
+             let userremto = bot.guilds.find(g => g.id == event_guildid).members.find(m => m.id == reqrem[event_messageid].userrem);
                     let whoremto = bot.guilds.find(g => g.id == event_guildid).members.find(m => m.id == reqrem[event_messageid].whorem)
                     let roleremto = bot.guilds.find(g => g.id == event_guildid).roles.find(r => r.name == reqrem[event_messageid].rolerem);
                     if (userremto.roles.some(r => [roleremto.name].includes(r.name))){
