@@ -12,14 +12,7 @@ let reqrem = JSON.parse(fs.readFileSync("./database/requests remove.json", "utf8
 const nrpnames = new Set();
 const zaprosagain = new Set();
 
-bot.on('message', async message => {
-         if (message.channel.type == "dm") return // Если в ЛС, то выход.
-         if (message.guild.id != "438803520288981004") return
-         if (message.type === "PINS_ADD") if (message.channel.name == "requests-for-roles") message.delete();
-         if (message.content == "/ping") return message.reply("`доступ закрыл владельцем. Подробности у Tony_Nagga#5649`")
-         if (message.author.bot) return
-
-/*tags = ({
+tags = ({
     "GOV": "Сотрудник Правительства",
     "DS": "Сотрудник Автошколы",
     "CBLS": "Сотрудник Банка LS",
@@ -120,11 +113,10 @@ bot.on('message', async message => {
     if (message.channel.type == "dm") return // Если в ЛС, то выход.
     if (message.guild.id != "438803520288981004") return
     if (message.type === "PINS_ADD") if (message.channel.name == "requests-for-roles") message.delete();
-    if (message.content == "/ping") return message.reply("`я работаю.`") && console.log(`Бот ответил ${message.member.displayName}, что я онлайн.`)
-    if (message.content == "/vlom") return message.reply("`в процессе.`")
+    if (message.content == "/ping") return message.reply("`доступп заблокирован владельцем. Подробности - Tony_Nagga#5649.`") && console.log(`Бот ответил ${message.member.displayName}, что я онлайн.`)
     if (message.author.bot) return
 
-    if (message.content.startsWith("/ffuser")){
+    /*if (message.content.startsWith("/ffuser")){
         if (!message.member.hasPermission("MANAGE_ROLES")) return
         const args = message.content.slice('/ffuser').split(/ +/)
         if (!args[1]) return
