@@ -114,6 +114,7 @@ bot.on('message', async message => {
     if (message.guild.id != "438803520288981004") return
     if (message.type === "PINS_ADD") if (message.channel.name == "requests-for-roles") message.delete();
     if (message.content == "/ping") return message.reply("`я работаю.`") && console.log(`Бот ответил ${message.member.displayName}, что я онлайн.`)
+    if (message.content == "/vlom") return message.reply("`в процессе.`")
     if (message.author.bot) return
 
     if (message.content.startsWith("/ffuser")){
