@@ -12,7 +12,14 @@ let reqrem = JSON.parse(fs.readFileSync("./database/requests remove.json", "utf8
 const nrpnames = new Set();
 const zaprosagain = new Set();
 
-tags = ({
+bot.on('message', async message => {
+         if (message.channel.type == "dm") return // Если в ЛС, то выход.
+         if (message.guild.id != "438803520288981004") return
+         if (message.type === "PINS_ADD") if (message.channel.name == "requests-for-roles") message.delete();
+         if (message.content == "/ping") return message.reply("`доступ закрыл владельцем. Подробности у Tony_Nagga#5649`")
+         if (message.author.bot) return
+
+/*tags = ({
     "GOV": "Сотрудник Правительства",
     "DS": "Сотрудник Автошколы",
     "CBLS": "Сотрудник Банка LS",
@@ -453,7 +460,7 @@ bot.on('raw', async event => {
                     "whorem": message.author.id,
                     "rolerem": rolerem.name,
                     */
-                    let userremto = bot.guilds.find(g => g.id == event_guildid).members.find(m => m.id == reqrem[event_messageid].userrem);
+       /*/*/*/*     /* let userremto = bot.guilds.find(g => g.id == event_guildid).members.find(m => m.id == reqrem[event_messageid].userrem);
                     let whoremto = bot.guilds.find(g => g.id == event_guildid).members.find(m => m.id == reqrem[event_messageid].whorem)
                     let roleremto = bot.guilds.find(g => g.id == event_guildid).roles.find(r => r.name == reqrem[event_messageid].rolerem);
                     if (userremto.roles.some(r => [roleremto.name].includes(r.name))){
